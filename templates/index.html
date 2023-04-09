@@ -1,0 +1,30 @@
+{% extends 'bootstrap/base.html' %}
+
+{% import 'bootstrap/wtf.html' as wtf %}
+
+{% block title %}평가 양식{% endblock %}
+
+{% block content %}
+  <div class="container">
+    <h1>평가 양식</h1>
+    <br>
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <ul class=flashes>
+        {% for message in messages %}
+          <li>{{ message }}</li>
+        {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+    <div class="row">
+      <div class="col-md-12">
+        <form method="POST" action="{{ url_for('evaluate') }}">
+          {{ form.hidden_tag() }}
+          {{ wtf.form_errors(form, hiddens="only") }}
+          {{ wtf.quick_form(form) }}
+        </form>
+      </div>
+    </div>
+  </div>
+{% endblock %}
