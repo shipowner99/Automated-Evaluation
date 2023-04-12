@@ -4,11 +4,12 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, TextAreaField, SubmitField
 from wtforms.validators import DataRequired
 import openai
+from main_config import OPENAI_API_KEY
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'secret_key'
 
-openai.api_key = "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"
+openai.api_key = OPENAI_API_KEY
 
 bootstrap = Bootstrap(app)
 
